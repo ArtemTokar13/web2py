@@ -1,0 +1,18 @@
+{{extend 'layout.html'}}
+
+<h1>{{=message}}</h1>
+
+<form action="{{=URL('search')}}">
+    <input type="submit" value="Buscar anuncio" />
+</form>
+
+<ul>
+    {{for anuncio in anuncios:}}
+        <h3>{{=LI(A(anuncio.title, _href=URL('show', args=anuncio.id)))}}</h3>
+        <p>Autor {{=db.auth_user[anuncio.created_by].first_name}} {{=db.auth_user[anuncio.created_by].last_name}}</p>
+    {{pass}}
+</ul>
+
+<form action="{{=URL('create')}}">
+    <input type="submit" value="Agregar anuncio" />
+</form>

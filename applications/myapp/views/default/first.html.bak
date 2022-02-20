@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+
+
+<h2>
+    What is your name?
+</h2>
+
+<form>
+    <input name="visitor_name" />
+    <input type="submit" />
+</form>

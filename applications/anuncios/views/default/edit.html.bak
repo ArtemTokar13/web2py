@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+<h1>Cambiar anuncio</h1>
+
+{{if message=='YES!':}}
+    {{=form}}
+{{else:}}
+    {{=message}}
+{{pass}}

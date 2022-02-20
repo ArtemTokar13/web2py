@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+<h1>Cambiar anuncio</h1>
+
+{{if message=='YES!':}}
+    {{=form}}
+{{else:}}
+    {{=message}}
+    <form action="{{=URL('index')}}">
+        <input type="submit" value="Inicio" />
+    </form>
+{{pass}}

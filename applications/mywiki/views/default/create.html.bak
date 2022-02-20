@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+
+<h1>
+    Cteate new wiki page
+</h1>
+{{=form}}

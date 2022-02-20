@@ -1,0 +1,19 @@
+{{extend 'layout.html'}}
+
+<h4>{{=anuncio.body}}<h4/><br/>
+
+<h5>Precio: {{=anuncio.price}}</h5>
+
+<h5>Contactos:<br/>- {{=anuncio.contacto}}</h5>
+
+{{if anuncio.negociacion == True:}}
+    <h5>La negociacion es apropriada</h5>
+{{pass}}
+
+<form action="{{=URL('edit', args=request.args)}}">
+    <input type="submit" value="Cambiar anuncio" />
+</form>
+<br/>
+<form action="{{=URL('index')}}">
+    <input type="submit" value="Inicio" />
+</form>

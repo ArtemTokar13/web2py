@@ -1,0 +1,13 @@
+{{extend 'layout.html'}}
+
+<h1>{{=page.title}}</h1>
+[ {{=A('edit', _href=URL('edit', args=request.args))}} ]
+[ {{=A('documents', _href=URL('documents', args=request.args))}} ]<br />
+{{=MARKMIN(page.body)}}
+<h2>Comments</h2>
+{{for comment in comments:}}
+    <p><I>{{=comment.body}}</I></p>
+    <p>{{=db.auth_user[comment.created_by].first_name}} - {{=comment.created_on}}</p>
+{{pass}}
+<h2>Post a comment</h2>
+{{=form}}
