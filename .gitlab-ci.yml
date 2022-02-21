@@ -1,6 +1,8 @@
 build-job:
   stage: build
   script:
+    - pwd
+    - ls
     - echo "Hello, Artem"
 
 test-job1:
