@@ -2,7 +2,7 @@ build-job:
   stage: build
   image: docker:20.10.12
   before_script:
-    - docker info
+    - docker --version
   script:
     - ls
     - echo "Hello, Artem"
