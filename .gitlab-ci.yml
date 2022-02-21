@@ -1,20 +1,12 @@
 build-job:
   stage: build
-  image: docker:20-dind
+  image: docker:latest
   services:
-    - name: docker:20-dind
-      command: ["--tls=false"]
-  variables:
-    DOCKER_DRIVER: overlay
-    DOCKER_HOST: tcp://localhost:2375/
-    DOCKER_TLS_CERTDIR: ""
-    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-    FF_GITLAB_REGISTRY_HELPER_IMAGE: 1
+    - docker:dind
   script:
-    - sudo service docker restart
+    - docker --version
     - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io
-    - docker build -t artemtokar/anuncios .
-    - docker push docker.io/atokar/anuncios
+    - docker build -t web2py-anuncios .
 
 test-job1:
   stage: test
