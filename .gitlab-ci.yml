@@ -11,7 +11,7 @@ build-job:
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
     FF_GITLAB_REGISTRY_HELPER_IMAGE: 1
   script:
-    - docker start
+    - service docker status
     - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io
     - docker build -t artemtokar/anuncios .
     - docker push docker.io/atokar/anuncios
