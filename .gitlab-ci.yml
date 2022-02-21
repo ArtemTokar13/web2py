@@ -6,6 +6,8 @@ build-job:
   script:
     - docker --version
     - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io
+    - docker run -d --rm --name anuncios artemtokar/web2py-anuncios
+    - docker stop anuncios
 
 test-job1:
   stage: test
