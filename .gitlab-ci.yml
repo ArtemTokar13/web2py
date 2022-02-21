@@ -1,6 +1,6 @@
 build-job:
   stage: build
-  image: docker
+  image: docker:latest
     - docker:dind
   script:
     - docker --version
