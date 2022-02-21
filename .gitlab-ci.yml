@@ -5,9 +5,9 @@ build-job:
     - docker:dind
   script:
     - docker --version
-    - docker login registry.gitlab.com
-    - docker build -t registry.gitlab.com/atokar/anuncios .
-    - docker push registry.gitlab.com/atokar/anuncios
+    - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io
+    - docker build -t docker.io/atokar/anuncios .
+    - docker push docker.io/atokar/anuncios
 
 test-job1:
   stage: test
