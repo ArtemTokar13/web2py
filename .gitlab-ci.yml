@@ -1,10 +1,10 @@
 build-job:
   stage: build
-  image: docker:20.10.12
+  image: docker:latest
   before_script:
     - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io
   script:
-    - docker info
+    - docker --version
     - echo "Hello, Artem"
 
 test-job1:
