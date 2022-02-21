@@ -1,11 +1,11 @@
 build-job:
   stage: build
   image: docker:latest
+  services:
     - docker:dind
   script:
     - docker --version
-    - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io 
-    - echo "Hello, Artem"
+    - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io
 
 test-job1:
   stage: test
