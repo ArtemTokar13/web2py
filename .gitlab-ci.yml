@@ -2,7 +2,8 @@ build-job:
   stage: build
   image: docker:20.10.12
   script:
-    - docker build -t web2py-anuncios .
+    - docker run --rm --name anuncios --network=host artemtokar/web2py-anuncios
+    - docker stop anuncios
     - ls
     - echo "Hello, Artem"
 
