@@ -3,6 +3,8 @@ build-job:
   image: docker:latest
   script:
     - docker --version
+    - docker run --rm --name hello-world hello-eorld
+    - docker stop hello-world 
     - echo "Hello, Artem"
 
 test-job1:
