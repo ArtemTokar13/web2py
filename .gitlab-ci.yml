@@ -13,7 +13,8 @@ build-job:
   script:
     - docker --version
     - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io
-    - export DOCKER_HOST=tcp://172.17.0.1:2375 && docker build -t web2py-anuncios .
+    - export DOCKER_HOST=tcp://172.17.0.1:2375
+    - docker build -t web2py-anuncios .
 
 test-job1:
   stage: test
