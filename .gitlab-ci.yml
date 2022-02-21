@@ -1,8 +1,7 @@
 build-job:
   stage: build
   script:
-    - %cd%
-    - pwd
+    - docker --version
     - ls
     - echo "Hello, Artem"
 
