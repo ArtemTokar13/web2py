@@ -1,7 +1,7 @@
 build-job:
   stage: build
   script:
-    - echo "Hello, atokar"
+    - echo "Hello, Artem"
 
 test-job1:
   stage: test
