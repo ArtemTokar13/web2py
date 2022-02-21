@@ -1,6 +1,6 @@
 build-job:
   stage: build
-  image: docker:latest
+  image: docker:20.10.12
   before_script:
     - docker info
   script:
