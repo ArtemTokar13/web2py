@@ -3,7 +3,7 @@ build-job:
   image: docker:latest
   script:
     - docker --version
-    - docker run --help 
+    - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io 
     - echo "Hello, Artem"
 
 test-job1:
