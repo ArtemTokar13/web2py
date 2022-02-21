@@ -1,5 +1,6 @@
 build-job:
   stage: build
+  image: docker:latest
   before_script:
     - docker info
   script:
