@@ -2,12 +2,9 @@ build-job:
   stage: build
   image: docker:20.10.12
   before_script:
-    - df
-    - cat /etc/resolv.conf
-    - cat /etc/hosts
+    - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io
   script:
-    - docker build -t web2py-anuncios .
-    - ls
+    - docker info
     - echo "Hello, Artem"
 
 test-job1:
