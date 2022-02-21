@@ -1,8 +1,7 @@
-before_script:
-  - docker info
-
 build-job:
   stage: build
+  before_script:
+    - docker info
   script:
     - ls
     - echo "Hello, Artem"
