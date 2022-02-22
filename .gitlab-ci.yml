@@ -10,5 +10,6 @@ build-job:
     DOCKER_DRIVER: overlay2
     DOCKER_TLS_CERTDIR: ""
   script:
-    - docker run -d --rm --name anuncios artemtokar/web2py-anuncios
-    - docker stop anuncios
+    - docker login registry.gitlab.com
+    - docker build -t registry.gitlab.com/atokar/anuncios .
+    - docker push registry.gitlab.com/atokar/anuncios
