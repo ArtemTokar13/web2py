@@ -17,4 +17,9 @@ build-job:
     - docker run -d --rm --name anuncios --network=host $CI_REGISTRY_IMAGE
     - docker run -d --rm --name postgresssss -e POSTGRES_HOST_AUTH_METHOD=trust --network=host postgres
     - docker ps -a
-    - psql -V
+    
+postgres-job:
+  image: jourdanrodrigues/python-postgresql
+  script: 
+    - /etc/init.d/postgresql start
+    - sudo -u postgres sh -c 'createuser atokar & createdb postgres'
