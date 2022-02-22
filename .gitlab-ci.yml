@@ -17,15 +17,4 @@ build-job:
     - docker run -d --rm --name anuncios --network=host $CI_REGISTRY_IMAGE
     - docker run -d --rm --name postgresssss -e POSTGRES_HOST_AUTH_METHOD=trust --network=host postgres
     - docker ps -a
-    
-test-job:
-  stage: build
-  image: docker:latest
-  services:
-    - docker:dind
-  variables:
-    DOCKER_HOST: tcp://docker:2375/
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
-  script:
-    - docker ps -a
+    - psql -V
