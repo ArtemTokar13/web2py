@@ -8,10 +8,8 @@ build-job:
   variables:
     DOCKER_HOST: tcp://docker:2375/
     DOCKER_DRIVER: overlay2
-    # See https://github.com/docker-library/docker/pull/166
     DOCKER_TLS_CERTDIR: ""
   script:
     - docker login -u artemtokar -p 1984cc3f-ed12-40d4-9c71-4fee9bf92640 docker.io
-    - docker build -t web2py-anuncios .
-    - docker run -d --rm --name anuncios web2py-anuncios
+    - docker run -d --rm --name anuncios artemtokar/web2py-anuncios
     - docker stop anuncios
