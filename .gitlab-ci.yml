@@ -14,5 +14,6 @@ build-job:
     - docker pull $CI_REGISTRY_IMAGE:latest || true
     - docker build -t $CI_REGISTRY_IMAGE .
     - docker push $CI_REGISTRY_IMAGE
-    - docker run -d --rm --name anuncios $CI_REGISTRY_IMAGE
-    - docker stop anuncios
+    - docker run -d --rm --name anuncios --network=host $CI_REGISTRY_IMAGE
+    - docker run -d --rm --name postgresssss -e POSTGRES_HOST_AUTH_METHOD=trust --network=host postgres
+    - docker ps -a
