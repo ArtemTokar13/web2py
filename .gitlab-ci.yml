@@ -7,4 +7,4 @@ postgress-start-job:
     POSTGRES_PASSWORD: ""
     POSTGRES_HOST_AUTH_METHOD: trust
   script:
-    - psql --host=localhost --port=5432 --username=$POSTGRES_USER postgres < "CREATE DATABASE test_database ENCODING 'UTF8' LC_COLLATE 'es_ES.UTF-8' LC_CTYPE 'es_ES.UTF-8' TEMPLATE template0;"
+    - psql --host=localhost --port=5432 --username=$POSTGRES_USER postgres createdb test
