@@ -6,12 +6,6 @@ WORKDIR /usr/src/web2py/
 RUN apt-get update \
   && apt-get install -y postgresql postgresql-contrib \
   && apt-get install sudo
-  
-RUN pip install psycopg2
-
-RUN /etc/init.d/postgresql start
-
-RUN ln -s /tmp/.s.PGSQL.5432 /var/run/postgresql/.s.PGSQL.5432
 
 RUN sudo -u postgres createdb postgres
 
