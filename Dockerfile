@@ -1,13 +1,8 @@
 FROM python:3.6
 
 RUN  mkdir -p /usr/src/web2py/
+
 WORKDIR /usr/src/web2py/
-
-RUN apt-get update \
-  && apt-get install -y postgresql postgresql-contrib \
-  && apt-get install sudo
-
-RUN sudo -u postgres createdb postgres
 
 COPY . /usr/src/web2py/
 

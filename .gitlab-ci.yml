@@ -1,3 +1,14 @@
+postgress-start-job:
+  services:
+  - postgres:12.2-alpine
+  variables:
+    POSTGRES_DB: postgres
+    POSTGRES_USER: $POSTGRES_USER
+    POSTGRES_PASSWORD: ""
+    POSTGRES_HOST_AUTH_METHOD: trust
+  script:
+    - sudo -u postgres psql \postgres
+
 build-job:
   stage: build
   image: docker:latest
