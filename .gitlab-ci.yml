@@ -7,7 +7,7 @@ postgress-start-job:
     POSTGRES_PASSWORD: ""
     POSTGRES_HOST_AUTH_METHOD: trust
   script:
-    - sudo -u postgres psql \postgres
+    - postgres psql \my-postgres
 
 build-job:
   stage: build
