@@ -11,6 +11,8 @@ RUN pip install psycopg2
 
 RUN service postgresql start
 
+RUN ln -s /tmp/.s.PGSQL.5432 /var/run/postgresql/.s.PGSQL.5432
+
 RUN sudo -u postgres createdb postgres
 
 COPY . /usr/src/web2py/
