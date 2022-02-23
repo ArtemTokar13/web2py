@@ -1,31 +1,27 @@
 import psycopg2
+import sys
 
-connection = None
-try:
-    # In PostgreSQL, default username is 'postgres' and password is 'postgres'.
-    # And also there is a default database exist named as 'postgres'.
-    # Default host is 'localhost' or '127.0.0.1'
-    # And default port is '54322'.
-    connection = psycopg2.connect("user='postgres' host='localhost' password='1234' port='5432'")
-    print('Database connected.')
 
-except:
-    print('Database not connected.')
+con = None
 
-if connection is not None:
-    connection.autocommit = True
 
-    cur = connection.cursor()
-
-    cur.execute("SELECT datname FROM pg_database;")
-
-    list_database = cur.fetchall()
-
-    database_name = input('Enter database name to check exist or not: ')
-
-    if (database_name,) in list_database:
-        print("'{}' Database already exist".format(database_name))
-    else:
-        print("'{}' Database not exist.".format(database_name))
-    connection.close()
-    print('Done')
+conn = psycopg2.connect(
+  dbname="anunciosdb",
+  user="atokar",
+  password="1234"
+)
+#     cur = con.cursor()
+#     cur.execute('SELECT 1 from mytable')          
+#     ver = cur.fetchone()
+#     print(ver)
+#
+#
+# except psycopg2.DatabaseError:
+#     print(psycopg2.DatabaseError)   
+#     sys.exit(1)
+#
+#
+# finally:
+#
+#     if con:
+#         con.close()
