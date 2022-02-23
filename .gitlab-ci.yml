@@ -1,10 +1,22 @@
-postgress-start-job:
+build-job:
+  stage: build
+  image: docker:latest
   services:
-  - postgres:12.2-alpine
+    - docker:dind
+    - postgres:12.2-alpine
   variables:
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
     POSTGRES_DB: postgres
-    POSTGRES_USER: $POSTGRES_USER
-    POSTGRES_PASSWORD: ""
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: "1234"
     POSTGRES_HOST_AUTH_METHOD: trust
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker info
   script:
-    - psql --host=localhost --port=5432 --username=$POSTGRES_USER postgres createdb test
+    - docker pull $CI_REGISTRY_IMAGE:latest || true
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
+    - docker run -d --rm --name anuncios --network=host $CI_REGISTRY_IMAGE
