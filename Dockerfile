@@ -9,7 +9,7 @@ RUN apt-get update \
   
 RUN pip install psycopg2
 
-RUN service postgresql start
+RUN /etc/init.d/postgresql start
 
 RUN ln -s /tmp/.s.PGSQL.5432 /var/run/postgresql/.s.PGSQL.5432
 
