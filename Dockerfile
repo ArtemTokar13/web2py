@@ -11,6 +11,8 @@ RUN pip install psycopg2
 
 RUN service postgresql start
 
+RUN sudo -u postgres createdb postgres
+
 COPY . /usr/src/web2py/
 
 EXPOSE 8000 5432
