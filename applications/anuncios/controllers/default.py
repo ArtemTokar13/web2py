@@ -1,6 +1,13 @@
+import psycopg2
+
 def index():
     message = 'Bienvenido al Anuncios!'
     anuncios = db().select(db.anuncio.id, db.anuncio.title, db.anuncio.created_by, orderby=db.anuncio.title)
+    # conn = psycopg2.connect(
+    #     host="172.18.0.2",
+    #     database="posrgres",
+    #     user="postgres",
+    #     password="1234")
     return dict(message=message, anuncios=anuncios)
 
 @auth.requires_login()

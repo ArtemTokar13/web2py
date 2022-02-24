@@ -1,4 +1,4 @@
-db = DAL('postgres://atokar:Metra/123@localhost:5432/postgres')
+db = DAL('postgres://postgres:postgres@172.18.0.2/postgres')
 #db = DAL('sqlite://storage.sqlite')
 
 from gluon.tools import *
