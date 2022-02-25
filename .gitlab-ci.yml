@@ -4,16 +4,6 @@ build-job:
   services:
     - docker:dind
     - postgres:12.2-alpine
-    - python:latest
-  variables:
-    DOCKER_HOST: tcp://docker:2375/
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
-    
-    POSTGRES_DB: postgres
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: ""
-    POSTGRES_HOST_AUTH_METHOD: trust
   script:
     - docker network create anuncios
     - docker build -t docker-postgres .
