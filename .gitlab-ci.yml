@@ -9,3 +9,4 @@ build-job:
     - docker build -t docker-postgres .
     - docker run -d --network anuncios --network-alias postgres -v anuncios-postgres-data:/var/lib/postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DATABASE=postgres postgres
     - docker run -d --name docker-postgres --network anuncios -e POSTGRES_HOST=172.18.0.2 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres docker-postgres
+    - docker run -it --network anuncios nicolaka/netshoot

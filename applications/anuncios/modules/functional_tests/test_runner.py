@@ -7,7 +7,7 @@ Created on 23 sept. 2020
 
 Ejecución:
     
-    python web2py.py --no-banner -S h3o -R applications/h3o/private/run_functional_tests.py
+    python web2py.py --no-banner -S anuncios -R applications/anuncios/private/run_functional_tests.py
 '''
 
 import unittest
@@ -16,10 +16,10 @@ from os.path import join as pjoin, isdir, splitext
 from gluon import current, DAL
 from gluon.tools import Auth
 from gluon.contrib.appconfig import AppConfig
-from .mock_db_data import MockDbData, define_views
-from db_conn import define_auth, define_all_tables, configure_mail_settings
-from perm_manage import Perm
-from constants import BRANDING_ID_FEDE
+# from .mock_db_data import MockDbData, define_views
+# from db_conn import define_auth, define_all_tables, configure_mail_settings
+# from perm_manage import Perm
+# from constants import BRANDING_ID_FEDE
 
 
 
@@ -99,7 +99,7 @@ def run_tests(recreate_database=False):
             for dirname in dirnames:
                 os.rmdir(pjoin(root, dirname)) 
         
-    current.db = db = DAL('sqlite://test_db.sqlite',
+    current.db = db = DAL('postgres://postgres:postgres@172.18.0.2/postgres',
              folder=test_db_path,
              lazy_tables=True,
              migrate_enabled=False)
@@ -107,11 +107,11 @@ def run_tests(recreate_database=False):
     
     current.auth = Auth(current.db)
     
-    define_all_tables(current.db, 
-                      MIGRATE_PREFIX='dev_functional_testing_',
-                      auth=current.auth,
-                      upload_folder_name='uploads_testing',
-                      extra_lazy=False)
+    # define_all_tables(current.db, 
+    #                 MIGRATE_PREFIX='dev_functional_testing_',
+    #                 auth=current.auth,
+    #                 upload_folder_name='uploads_testing',
+    #                 extra_lazy=False)
 
     try:
         db_is_empty = db(db.auth_user.id>0).isempty()
@@ -119,7 +119,7 @@ def run_tests(recreate_database=False):
         db_is_empty = True
          
     if db_is_empty:
-        current.db = db = DAL('sqlite://test_db.sqlite',
+        current.db = db = DAL('postgres://postgres:postgres@172.18.0.2/postgres',
              folder=test_db_path,
              lazy_tables=True,
              migrate_enabled=True)
@@ -127,32 +127,32 @@ def run_tests(recreate_database=False):
     
         current.auth = Auth(current.db)
         
-        define_all_tables(current.db, 
-                          MIGRATE_PREFIX='dev_functional_testing_',
-                          auth=current.auth,
-                          upload_folder_name='uploads_testing',
-                          extra_lazy=False)
-        define_views(db)
-        current.oMock_db_data = MockDbData(db) 
-        current.oMock_db_data.fill_test_data()
+        # define_all_tables(current.db, 
+        #                   MIGRATE_PREFIX='dev_functional_testing_',
+        #                   auth=current.auth,
+        #                   upload_folder_name='uploads_testing',
+        #                   extra_lazy=False)
+        # define_views(db)
+        # current.oMock_db_data = MockDbData(db) 
+        # current.oMock_db_data.fill_test_data()
     
 #     suite = unittest.TestLoader().loadTestsFromModule(save_work_session)
 
-    from .h3o_api import (save_work_session, cloud_check, check_sw_version, 
-                          download_plots, download_sprayer_list, download_scg_list,
-                          finish_ns_work_order, save_factory_data, 
-                          change_work_session_state, register_user,
-                          expert_alert)
-
-    suite = unittest.TestSuite()
-
-    for m in [save_work_session, cloud_check, check_sw_version, download_plots,
-              download_sprayer_list, download_scg_list, 
-              finish_ns_work_order, save_factory_data, 
-              change_work_session_state, register_user,
-              expert_alert]:
-
-        suite.addTest(unittest.TestLoader().loadTestsFromModule(m))
+    # from .h3o_api import (save_work_session, cloud_check, check_sw_version, 
+    #                       download_plots, download_sprayer_list, download_scg_list,
+    #                       finish_ns_work_order, save_factory_data, 
+    #                       change_work_session_state, register_user,
+    #                       expert_alert)
+    #
+    # suite = unittest.TestSuite()
+    #
+    # for m in [save_work_session, cloud_check, check_sw_version, download_plots,
+    #           download_sprayer_list, download_scg_list, 
+    #           finish_ns_work_order, save_factory_data, 
+    #           change_work_session_state, register_user,
+    #           expert_alert]:
+    #
+    #     suite.addTest(unittest.TestLoader().loadTestsFromModule(m))
      
 #    """ --- Pruebas individuales --- """ 
 # 
@@ -196,6 +196,6 @@ def run_tests(recreate_database=False):
 #    """ --- Fin pruebas individuales --- """
 
 
-    unittest.TextTestRunner(verbosity=1).run(suite)
+    # unittest.TextTestRunner(verbosity=1).run(suite)
 
     
