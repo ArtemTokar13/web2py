@@ -14,13 +14,8 @@ build-job:
     POSTGRES_USER: postgres
     POSTGRES_PASSWORD: ""
     POSTGRES_HOST_AUTH_METHOD: trust
-  before_script:
-    - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker info
   script:
     - docker network create anuncios
     - docker build -t docker-postgres .
     - docker run -d --network anuncios --network-alias postgres -v anuncios-postgres-data:/var/lib/postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DATABASE=postgres postgres
     - docker run -d --name docker-postgres --network anuncios -e POSTGRES_HOST=172.18.0.2 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres docker-postgres
-    - python testdb.py
