@@ -1,6 +1,7 @@
 build-job:
   stage: build
   image: docker:latest
+  image: python:latest
   services:
     - docker:dind
   script:
