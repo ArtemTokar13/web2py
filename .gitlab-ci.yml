@@ -1,7 +1,6 @@
 build-job:
   stage: build
   image: docker:latest
-  image: python:latest
   services:
     - docker:dind
   script:
@@ -11,3 +10,4 @@ build-job:
     - docker run -d --rm --name artem-application --network my-network artem-application
     - docker ps -a
     - python testdb.py
+  
