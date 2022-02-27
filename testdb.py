@@ -1,8 +1,5 @@
-import psycopg2
+import request
 
 
-conn = psycopg2.connect(
-  dbname="postgres",
-  user="postgres",
-  password="postgres"
-)
+page = request.get('http://0.0.0.0:8000/anuncios/default/index')
+print(page.text)
