@@ -1,5 +1,3 @@
-import psycopg2
-
 def index():
     message = 'Bienvenido al Anuncios!'
     anuncios = db().select(db.anuncio.id, db.anuncio.title, db.anuncio.created_by, orderby=db.anuncio.title)
