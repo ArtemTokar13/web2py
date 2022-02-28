@@ -8,11 +8,17 @@ build-job:
     - apk add --update curl && rm -rf /var/cache/apk/*
   script:
     - curl google.com
+    - sudo -s
+    - apt-get install bridge-utils
+    - service docker stop
+    - iptables -t nat -F
+    - ifconfig docker0 down
+    - brctl delbr docker0
+    - service docker start
     - docker build -t artem-application .
     - docker network create my-network
     - docker run -d --rm --name my-postgres --network my-network -p 5432:5432 -v anuncios-postgres-data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=postgres -d postgres
     - docker run -d --rm --name artem-application --network my-network artem-application
     - docker ps -a
-    - tty -s && docker exec -it artem-application bash
     - curl --request GET 'http://0.0.0.0:8000' -I
   
