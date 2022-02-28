@@ -2,27 +2,8 @@ build-job:
   stage: build
   image: docker:latest
   services:
-    - gitlab:
-      container_name: 'gitlab'
-      image: 'gitlab/gitlab-ce:latest'
-      restart: always
-      hostname: 'gitlab'
-      ports:
-        - '80:80'
-        - '5432:5432'
-        - '8000:8000'
-      expose:
-        - 80
-        - 5432
-        - 8000
-      volumes:
-        - '/docker/gitlab/conf:/etc/gitlab'
-        - '/docker/gitlab/logs:/var/log/gitlab'
-        - '/docker/gitlab/data:/var/opt/gitlab'
-      networks:
-        - my-network
-    - name: docker:dind
-    - name: atlassian/default-image:3
+    - docker:dind
+    - atlassian/default-image:3
   before_script:
     - apk add --update curl && rm -rf /var/cache/apk/*
   script:
@@ -32,5 +13,6 @@ build-job:
     - docker run -d --rm --name my-postgres --network my-network -p 5432:5432 -v anuncios-postgres-data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=postgres -d postgres
     - docker run -d --rm --name artem-application --network my-network artem-application
     - docker ps -a
+    - docker port test
     - curl --request GET 'http://0.0.0.0:8000' -I
   
