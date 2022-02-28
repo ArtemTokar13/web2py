@@ -8,7 +8,6 @@ build-job:
     - apk add --update curl && rm -rf /var/cache/apk/*
   script:
     - curl google.com
-    - sudo -s
     - apt-get install bridge-utils
     - service docker stop
     - iptables -t nat -F
