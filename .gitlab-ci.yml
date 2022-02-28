@@ -2,7 +2,7 @@ build-job:
   stage: build
   image: docker:latest
   services:
-    - gitlab:
+    gitlab:
       - container_name: 'gitlab'
       - image: 'gitlab/gitlab-ce:latest'
       - restart: always
@@ -21,8 +21,8 @@ build-job:
         - '/docker/gitlab/data:/var/opt/gitlab'
       - networks:
         - my-network
-    - docker:dind
-    - atlassian/default-image:3
+      - name: docker:dind
+      - name: atlassian/default-image:3
   before_script:
     - apk add --update curl && rm -rf /var/cache/apk/*
   script:
