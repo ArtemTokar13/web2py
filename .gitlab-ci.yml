@@ -2,8 +2,27 @@ build-job:
   stage: build
   image: docker:latest
   services:
-    - name: docker:dind
-    - name: atlassian/default-image:3
+    - gitlab:
+      - container_name: 'gitlab'
+      - image: 'gitlab/gitlab-ce:latest'
+      - restart: always
+      - hostname: 'gitlab'
+      - ports:
+        - '80:80'
+        - '5432:5432'
+        - '8000:8000'
+      - expose:
+        - 80
+        - 5432
+        - 8000
+      - volumes:
+        - '/docker/gitlab/conf:/etc/gitlab'
+        - '/docker/gitlab/logs:/var/log/gitlab'
+        - '/docker/gitlab/data:/var/opt/gitlab'
+      - networks:
+        - my-network
+    - docker:dind
+    - atlassian/default-image:3
   before_script:
     - apk add --update curl && rm -rf /var/cache/apk/*
   script:
