@@ -4,6 +4,7 @@ encoding//applications/anuncios/modules/functional_tests/test_runner.py=utf-8
 encoding//applications/anuncios/private/run_functional_tests.py=utf-8
 encoding//gluon/compileapp.py=utf-8
 encoding//gluon/fileutils.py=utf-8
+encoding//gluon/rocket.py=utf-8
 encoding//gluon/shell.py=utf-8
 encoding//gluon/widget.py=utf-8
 encoding/dev_imports_para_eclipse.py=utf-8

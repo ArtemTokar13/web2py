@@ -6,8 +6,10 @@ WORKDIR /usr/src/web2py/
 
 COPY . /usr/src/web2py/
 
+ENV LANG=en_US.UTF-8
+
 RUN pip3 install psycopg2
 
-EXPOSE 8000
+EXPOSE 1234
 
-CMD ["python", "web2py.py", "-a", "'1'", "-i", "0.0.0.0", "-p", "8000"]
+CMD ["python", "web2py.py", "-a", "'1'", "-i", "0.0.0.0", "-p", "1234"]

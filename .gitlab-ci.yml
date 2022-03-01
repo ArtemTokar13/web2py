@@ -12,7 +12,6 @@ build-job:
     - docker network create my-network
     - docker run -d --rm --name my-postgres --network my-network -p 5432:5432 -v anuncios-postgres-data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=postgres -d postgres
     - docker run -d --rm --name artem-application --network my-network artem-application
-    - python web2py.py -a '1' -i 127.0.0.1 -p 8000
-    - curl 127.0.0.1/welcome/default/index
+    - curl http://0.0.0.0:1234/welcome/default/index
     - docker ps -a
   
