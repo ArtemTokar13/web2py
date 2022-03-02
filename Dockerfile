@@ -6,8 +6,6 @@ WORKDIR /usr/src/web2py/
 
 COPY . /usr/src/web2py/
 
-ENV LANG=en_US.UTF-8
-
 RUN pip3 install psycopg2
 
 EXPOSE 1234
