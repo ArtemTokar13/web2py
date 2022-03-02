@@ -12,8 +12,8 @@ Ejecución:
 '''
 
 
-from applications.anuncios.modules.functional_tests import test_runner
+from applications.anuncios.modules.functional_tests.test_runner import TestConnect
 
 
 if __name__ == '__main__':
-    test_runner.testDB()
+    unittest.main()

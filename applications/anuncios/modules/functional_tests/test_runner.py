@@ -13,15 +13,26 @@ Ejecución:
 import unittest
 import os
 import requests
+from .connection_test import connection
 
 
-def testDB():
-    page = requests.get('http://0.0.0.0:1234/anuncios_copy/default/create')
-    if page:
-        print('Success')
-    else:
-        print('No connection')
-    
+class TestConnect(unittest.TestCase):
 
+    def setUp(self):
+        self.res = connection()
+
+    def test_response_correct_status_code(self):
+        self.assertEqual(200, self.res.status_code)
+#
+# def connection_test():
+#     page = connection()
+#     if page:
+#         print(page.status_code)
+#         print('Success')
+#     else:
+#         print('No connection')
+#
+# # def db_test(unittest.TestCase):
+# #     from 
 
     

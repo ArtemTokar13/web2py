@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//applications/anuncios/models/db.py=utf-8
+encoding//applications/anuncios/models/menu.py=utf-8
 encoding//applications/anuncios/modules/functional_tests/test_runner.py=utf-8
 encoding//applications/anuncios/private/run_functional_tests.py=utf-8
 encoding//gluon/compileapp.py=utf-8
