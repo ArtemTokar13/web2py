@@ -1,5 +1,5 @@
 import requests
 
 
-page = requests.get('http://0.0.0.0:8000/anuncios/default/index')
-print(page[0])
+page = requests.get('http://0.0.0.0:1234/anuncios_copy/default/create')
+print(page.text)

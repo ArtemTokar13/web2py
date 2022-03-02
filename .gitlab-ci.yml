@@ -12,6 +12,6 @@ build-job:
     - docker network create my-network
     - docker run -d --rm --name my-postgres --network my-network -p 5432:5432 -v anuncios-postgres-data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=postgres -d postgres
     - docker run -p 1234:1234 --rm --name artem-application --network my-network artem-application
-    - curl http://localhost:1234/welcome/default/index
+    - curl http://localhost:1234/anuncios_copy/default/index
     - docker ps -a
   
