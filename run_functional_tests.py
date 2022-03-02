@@ -12,8 +12,8 @@ Ejecución:
 '''
 
 
-from functional_tests import test_runner
+from applications.anuncios.modules.functional_tests import test_runner
 
 
 if __name__ == '__main__':
-    test_runner.run_tests(recreate_database=False)
+    test_runner.testDB()
