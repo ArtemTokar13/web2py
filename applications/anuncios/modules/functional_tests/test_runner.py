@@ -13,7 +13,7 @@ Ejecución:
 import unittest
 import os
 import requests
-from .connection_test import connection
+from connection_test import connection
 
 
 class TestConnect(unittest.TestCase):
@@ -23,16 +23,3 @@ class TestConnect(unittest.TestCase):
 
     def test_response_correct_status_code(self):
         self.assertEqual(200, self.res.status_code)
-#
-# def connection_test():
-#     page = connection()
-#     if page:
-#         print(page.status_code)
-#         print('Success')
-#     else:
-#         print('No connection')
-#
-# # def db_test(unittest.TestCase):
-# #     from 
-
-    

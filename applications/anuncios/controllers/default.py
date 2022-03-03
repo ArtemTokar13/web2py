@@ -1,3 +1,6 @@
+from dev_imports_para_eclipse import *
+
+
 def index():
     message = 'Bienvenido al Anuncios!'
     anuncios = db().select(db.anuncio.id, db.anuncio.title, db.anuncio.created_by, orderby=db.anuncio.title)
