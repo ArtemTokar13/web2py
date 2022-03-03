@@ -13,13 +13,13 @@ Ejecución:
 import unittest
 import os
 import requests
-from connection_test import connection
+from connection_test import connection_anuncios_copy
 
 
 class TestConnect(unittest.TestCase):
 
     def setUp(self):
-        self.res = connection()
+        self.res = connection_anuncios_copy()
 
     def test_response_correct_status_code(self):
         self.assertEqual(200, self.res.status_code)
