@@ -19,7 +19,11 @@ from connection_test import connection_anuncios_copy
 class TestConnect(unittest.TestCase):
 
     def setUp(self):
-        self.res = connection_anuncios_copy()
+        self.res1 = connection_anuncios_copy()
+        self.res2 = connection_anuncios()
 
-    def test_response_correct_status_code(self):
-        self.assertEqual(200, self.res.status_code)
+    def test_response_correct_status_code_1(self):
+        self.assertEqual(200, self.res1.status_code)
+        
+    def test_response_correct_status_code_2(self):
+        self.assertEqual(200, self.res2.status_code)
