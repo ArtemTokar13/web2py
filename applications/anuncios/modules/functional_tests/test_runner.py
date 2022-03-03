@@ -13,7 +13,7 @@ Ejecución:
 import unittest
 import os
 import requests
-from connection_test import connection_anuncios_copy, connection_anuncios()
+from connection_test import connection_anuncios_copy, connection_anuncios
 
 
 class TestConnect(unittest.TestCase):
